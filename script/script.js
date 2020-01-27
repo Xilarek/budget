@@ -11,8 +11,8 @@ let money = +prompt('Ваш месячный доход ?'),
     expenses2 = prompt('Введите обязательную статью расходов'),
     amout1 = +prompt('Во сколько это обойдется ?'),
     amout2 = +prompt('Во сколько это обойдется ?'),
-    budgetDay = money - (amout1 + amout2) / 30,
-    budgetMounth = money - (amout1 - amout2 );
+    budgetDay = (money - (amout1 + amout2)) / 30,
+    budgetMounth = money - (amout1 + amout2 );
 
 addExpenses = addExpenses.split(',');
 
@@ -39,6 +39,6 @@ console.log('Цель заработать '+ mission + 'рублей' );
 console.log(budgetDay);
 console.log(addExpenses);
 console.log('Бюджет на месяц '+ budgetMounth); 
-console.log('Цель будет достигнута ' + mission);
+console.log('Цель будет достигнута ' + missionMonth);
 console.log('Бюджет на день ' + budgetDay);
 

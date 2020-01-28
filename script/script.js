@@ -8,17 +8,38 @@ let money = +prompt('Ваш месячный доход ?'),
     mission = 50000,
     period = 6,
     expenses1 = prompt('Введите обязательную статью расходов'),
-    expenses2 = prompt('Введите обязательную статью расходов'),
     amout1 = +prompt('Во сколько это обойдется ?'),
-    amout2 = +prompt('Во сколько это обойдется ?'),
-    budgetDay = (money - (amout1 + amout2)) / 30,
-    budgetMounth = money - (amout1 + amout2 );
-
+    expenses2 = prompt('Введите обязательную статью расходов'),
+    amout2 = +prompt('Во сколько это обойдется ?');
+    
 addExpenses = addExpenses.split(',');
 
-budgetDay = Math.floor(budgetMounth / 30);
+//Функция суммый обязательных  расходов за месяц 
+const getExpensesMonth = function(amout1, amout2) {
+     return amout1 + amout2;
+ };
+    let costs = getExpensesMonth(amout1, amout2);
+    console.log('costs:', costs );
 
-const missionMonth = Math.ceil(mission / budgetMounth);
+//Функция расчета накоплений за месяц 
+ const getAccumulatedMonth = function(money, costs) {
+     return money - costs;
+ };
+    let accumulation = getAccumulatedMonth(money, costs);
+    let budgetDay = accumulation / 30;
+    budgetDay = Math.floor(accumulation / 30);
+
+ let accumulatedMonth = accumulation;
+    console.log('accumulation:', accumulation );
+
+//Функция расчета достижения цели 
+ const getTargetMonth = function(mission, accumulatedMonth) {
+     let missionMonth =  mission / accumulatedMonth;
+     return Math.ceil(missionMonth);
+ };
+ let missionMonth = getTargetMonth(mission, accumulatedMonth);
+ console.log('missionMonth:', missionMonth);
+
 
 if (budgetDay >= 1200) {
     alert('У вас высокий уровень дохода!');
@@ -26,19 +47,16 @@ if (budgetDay >= 1200) {
     alert('У вас средний уровень дохода');
 } if (budgetDay < 600 && budgetDay > 0 ) {
     alert('К сожалению у вас уровень дохода ниже среднего');
-} if (budgetDay < 0) {
+} if (budgetDay <= 0) {
     alert('Что-то пошло не так');
 }
-
-console.log(typeof money );
-console.log(typeof income );
-console.log(typeof addExpenses );
-console.log(addExpenses.length );
-console.log('Период равен ' + period + ' месяцев');
-console.log('Цель заработать '+ mission + 'рублей' );
-console.log(budgetDay);
+console.log('месячный доход '+ money);
 console.log(addExpenses);
-console.log('Бюджет на месяц '+ budgetMounth); 
-console.log('Цель будет достигнута ' + missionMonth);
+console.log('Обязательные расходы '+costs);
+console.log('Период равен ' + period + ' месяцев');
 console.log('Бюджет на день ' + budgetDay);
-
+console.log('Цель заработать '+ mission + 'рублей' );
+console.log('Цель будет достигнута ' + missionMonth);
+console.log(typeof money);
+console.log(typeof income);
+console.log(typeof addExpenses);

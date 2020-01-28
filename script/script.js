@@ -40,16 +40,20 @@ const getExpensesMonth = function(amout1, amout2) {
  let missionMonth = getTargetMonth(mission, accumulatedMonth);
  console.log('missionMonth:', missionMonth);
 
-
+const getStatusIncome = function (budgetDay) {
 if (budgetDay >= 1200) {
-    alert('У вас высокий уровень дохода!');
+    console.log('У вас высокий уровень дохода!');
 } if (budgetDay >= 600 && budgetDay < 1200  ) {
-    alert('У вас средний уровень дохода');
+    return console.log('У вас средний уровень дохода');
+    
 } if (budgetDay < 600 && budgetDay > 0 ) {
-    alert('К сожалению у вас уровень дохода ниже среднего');
+    return console.log('К сожалению у вас уровень дохода ниже среднего');
+    
 } if (budgetDay <= 0) {
-    alert('Что-то пошло не так');
+    return console.log('Что-то пошло не так');
 }
+}; 
+let getStatus = getStatusIncome(budgetDay);
 console.log('месячный доход '+ money);
 console.log(addExpenses);
 console.log('Обязательные расходы '+costs);

@@ -15,45 +15,45 @@ let money = +prompt('Ваш месячный доход ?'),
 addExpenses = addExpenses.split(',');
 
 //Функция суммый обязательных  расходов за месяц 
-const getExpensesMonth = function(amout1, amout2) {
+const getExpensesMonth = function() {
      return amout1 + amout2;
  };
-    let costs = getExpensesMonth(amout1, amout2);
+    let costs = getExpensesMonth();
     console.log('costs:', costs );
 
 //Функция расчета накоплений за месяц 
- const getAccumulatedMonth = function(money, costs) {
+ const getAccumulatedMonth = function() {
      return money - costs;
  };
-    let accumulation = getAccumulatedMonth(money, costs);
+    let accumulation = getAccumulatedMonth();
     let budgetDay = accumulation / 30;
     budgetDay = Math.floor(accumulation / 30);
 
- let accumulatedMonth = accumulation;
     console.log('accumulation:', accumulation );
 
 //Функция расчета достижения цели 
- const getTargetMonth = function(mission, accumulatedMonth) {
-     let missionMonth =  mission / accumulatedMonth;
+ const getTargetMonth = function() {
+     let missionMonth =  mission / accumulation;
      return Math.ceil(missionMonth);
  };
- let missionMonth = getTargetMonth(mission, accumulatedMonth);
+ let missionMonth = getTargetMonth();
  console.log('missionMonth:', missionMonth);
 
-const getStatusIncome = function (budgetDay) {
+const getStatusIncome = function () {
 if (budgetDay >= 1200) {
-    console.log('У вас высокий уровень дохода!');
+    return 'У вас высокий уровень дохода!';
 } if (budgetDay >= 600 && budgetDay < 1200  ) {
-    return console.log('У вас средний уровень дохода');
+    return 'У вас средний уровень дохода';
     
 } if (budgetDay < 600 && budgetDay > 0 ) {
-    return console.log('К сожалению у вас уровень дохода ниже среднего');
+    return 'К сожалению у вас уровень дохода ниже среднего';
     
 } if (budgetDay <= 0) {
-    return console.log('Что-то пошло не так');
+    return 'Что-то пошло не так';
 }
 }; 
-let getStatus = getStatusIncome(budgetDay);
+let getStatus = getStatusIncome();
+console.log('getStatus:', getStatus);
 console.log('месячный доход '+ money);
 console.log(addExpenses);
 console.log('Обязательные расходы '+costs);

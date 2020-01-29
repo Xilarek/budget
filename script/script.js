@@ -67,11 +67,11 @@ console.log('accumulation:', accumulation);
 const getTargetMonth = function () {
     let missionMonth = Math.ceil(mission / accumulation);
     if (missionMonth <= 0 || missionMonth === Infinity) {
-        console.log('Цель не будет достигнута');
-    } else {
-        console.log('Цель будет достигнута');
-    }
-    return missionMonth;
+        return 'Цель не будет достигнута';
+        } else {
+        return missionMonth;
+        }
+    
 };
 let missionMonth = getTargetMonth();
 console.log('missionMonth:', missionMonth);

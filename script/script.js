@@ -49,11 +49,12 @@ let appData = {
     },
     //Функция суммый обязательных  расходов за месяц 
     getExpensesMonth: function () {
-
+        let sum = 0; 
         for (let key in appData.expenses) {
-            console.log(key);
-            appData.expensesMonth += appData.expenses[key];
+            sum += appData.expenses[key];
+            appData.expensesMonth = sum;
             console.log(appData.expensesMonth);
+            return;
         }
 
     },
@@ -95,6 +96,9 @@ let appData = {
 };
 
 appData.asking();
+appData.getExpensesMonth();
+appData.getBudget();
+appData.getTargetMonth();
 
 let expensesMonth = appData.getExpensesMonth();
 console.log('expensesMonth:', expensesMonth);
@@ -112,9 +116,9 @@ let getStatus = appData.getStatusIncome();
 
 console.log(appData.expenses);
 console.log('getStatus:', getStatus);
-console.log('месячный доход ' + money);
+console.log('месячный доход ' + appData.budget);
 console.log(appData.addExpenses);
-console.log('Обязательные расходы ' + expensesMonth);
+console.log('Обязательные расходы ' + appData.expensesMonth);
 console.log('Период равен ' + appData.period + ' месяцев');
 console.log('Бюджет на день ' + appData.budgetDay);
 console.log('Цель заработать ' + appData.mission + 'рублей');

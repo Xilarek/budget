@@ -45,16 +45,11 @@ let appData = {
             appData.expenses[question] = sum;
 
         }
-        return sum;
     },
     //Функция суммый обязательных  расходов за месяц 
     getExpensesMonth: function () {
-        let sum = 0; 
         for (let key in appData.expenses) {
-            sum += appData.expenses[key];
-            appData.expensesMonth = sum;
-            console.log(appData.expensesMonth);
-            return;
+            appData.expensesMonth += appData.expenses[key];
         }
 
     },
@@ -62,9 +57,6 @@ let appData = {
     getBudget: function () {
         appData.budgetMonth = appData.budget - appData.expensesMonth;
         appData.budgetDay = Math.floor(appData.budgetMonth / 30);
-        return;
-
-
     },
     //Функция расчета достижения цели 
     getTargetMonth: function () {
@@ -96,29 +88,22 @@ let appData = {
 };
 
 appData.asking();
+
 appData.getExpensesMonth();
+console.log('Обязательные расходы на месяц:', appData.expensesMonth);
+
+
 appData.getBudget();
-appData.getTargetMonth();
-
-let expensesMonth = appData.getExpensesMonth();
-console.log('expensesMonth:', expensesMonth);
-
-
-let accumulation = appData.getBudget();
-console.log('accumulation:', accumulation);
+console.log('Бюджет на месяц:', appData.budgetMonth);
 
 
 let missionMonth = appData.getTargetMonth();
-console.log('missionMonth:', missionMonth);
+console.log('Будет реализованно за:', missionMonth);
 
 
 let getStatus = appData.getStatusIncome();
 
-console.log(appData.expenses);
-console.log('getStatus:', getStatus);
-console.log('месячный доход ' + appData.budget);
-console.log(appData.addExpenses);
-console.log('Обязательные расходы ' + appData.expensesMonth);
-console.log('Период равен ' + appData.period + ' месяцев');
-console.log('Бюджет на день ' + appData.budgetDay);
-console.log('Цель заработать ' + appData.mission + 'рублей');
+for ( let key in appData) {
+
+    console.log('Наша программа включает в себя ' +key +' ' +appData[key]);
+}

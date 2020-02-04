@@ -162,8 +162,8 @@ for (let key in appData) {
 
 
 let calculate = document.getElementById('start');
-let bottonPlusOne = document.getElementsByTagName('btn_plus'[0]);
-let bottonPlusTwo = document.getElementsByTagName('btn_plus'[1]);
+let bottonPlusOne = document.getElementsByTagName('button')[0];
+let bottonPlusTwo = document.getElementsByTagName('button')[1];
 let checkBox = document.querySelector('#checkmark');
 let  additionalIncome = document.querySelectorAll('.additional_income-item');
 let budgetDay = document.querySelector('.budget_day-value');

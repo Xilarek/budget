@@ -162,10 +162,11 @@ for (let key in appData) {
 
 
 let calculate = document.getElementById('start');
-let bottonPlusOne = document.getElementsByTagName('button')[0];
-let bottonPlusTwo = document.getElementsByTagName('button')[1];
-let checkBox = document.querySelector('#checkmark');
-let  additionalIncome = document.querySelectorAll('.additional_income-item');
+let discharge = document.getElementById('cancel');
+let expensesAdd = document.querySelectorAll('.btn_plus')[0];
+let incomeAdd = document.querySelectorAll('.btn_plus')[1];
+let checkBox = document.getElementById('checkmark');
+let additionalIncome = document.querySelectorAll('.additional_income-item');
 let budgetDay = document.querySelector('.budget_day-value');
 let expensesMonth = document.querySelector('.expenses_month-value');
 let additionalIncom = document.querySelector('.additional_income-value');
@@ -181,24 +182,4 @@ let possibleExpenses = document.querySelector('.additional_expenses-item');
 let targetAmount = document.querySelector('.target-amount');
 let period = document.querySelector('.period-select');
 
-
-console.log(calculate);
-console.log(bottonPlusOne);
-console.log(bottonPlusTwo);
-console.log(checkBox);
-console.log(additionalIncome);
-console.log(budgetDay);
-console.log(expensesMonth);
-console.log(additionalIncom);
-console.log(additionalExpenses);
-console.log(incomePeriod);
-console.log(targetMonth);
-console.log(budgetMonth);
-console.log(itemIncome);
-console.log(cashIncome);
-console.log(expenses);
-console.log(expensesAmount);
-console.log(possibleExpenses);
-console.log(targetAmount);
-console.log(period);
 

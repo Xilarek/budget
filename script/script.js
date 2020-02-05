@@ -1,4 +1,28 @@
 'use strict';
+let calculate = document.getElementById('start');
+let discharge = document.getElementById('cancel');
+let expensesAdd = document.querySelectorAll('.btn_plus')[0];
+let incomeAdd = document.querySelectorAll('.btn_plus')[1];
+let checkBox = document.getElementById('checkmark');
+let additionalIncomeOne = document.querySelectorAll('.additional_income-item')[0];
+let additionalIncomeTwo = document.querySelectorAll('.additional_income-item')[1];
+let budgetDay = document.querySelector('.budget_day-value');
+let expensesMonth = document.querySelector('.expenses_month-value');
+let additionalIncom = document.querySelector('.additional_income-value');
+let additionalExpenses = document.querySelector('.additional_expenses-value');
+let incomePeriod = document.querySelector('.income_period-value');
+let targetMonth = document.querySelector('.target_month-value');
+let budgetMonth = document.querySelector('.salary-amount');
+let itemIncome = document.querySelector('.income-titles');
+let cashIncome = document.querySelector('.income-amount');
+let expensesOne = document.querySelectorAll('.additional_income-item')[0];
+let expensesTwo = document.querySelectorAll('.additional_income-item')[1];
+let expensesAmountOne = document.querySelectorAll('.expenses-amount')[0];
+let expensesAmountTwo = document.querySelectorAll('.expenses-amount')[1];
+let possibleExpenses = document.querySelector('.additional_expenses-item');
+let targetAmount = document.querySelector('.target-amount');
+let period = document.querySelector('.period-select');
+
 let isNumber = function (n) {
     return !isNaN(parseFloat(n)) && isFinite(n);
 };
@@ -161,51 +185,7 @@ for (let key in appData) {
 }*/
 
 
-let calculate = document.getElementById('start');
-let discharge = document.getElementById('cancel');
-let expensesAdd = document.querySelectorAll('.btn_plus')[0];
-let incomeAdd = document.querySelectorAll('.btn_plus')[1];
-let checkBox = document.getElementById('checkmark');
-let additionalIncomeOne = document.querySelectorAll('.additional_income-item')[0];
-let additionalIncomeTwo = document.querySelectorAll('.additional_income-item')[1];
-let budgetDay = document.querySelector('.budget_day-value');
-let expensesMonth = document.querySelector('.expenses_month-value');
-let additionalIncom = document.querySelector('.additional_income-value');
-let additionalExpenses = document.querySelector('.additional_expenses-value');
-let incomePeriod = document.querySelector('.income_period-value');
-let targetMonth = document.querySelector('.target_month-value');
-let budgetMonth = document.querySelector('.salary-amount');
-let itemIncome = document.querySelector('.income-titles');
-let cashIncome = document.querySelector('.income-amount');
-let expensesOne = document.querySelectorAll('.additional_income-item')[0];
-let expensesTwo = document.querySelectorAll('.additional_income-item')[1];
-let expensesAmountOne = document.querySelectorAll('.expenses-amount')[0];
-let expensesAmountTwo = document.querySelectorAll('.expenses-amount')[1];
-let possibleExpenses = document.querySelector('.additional_expenses-item');
-let targetAmount = document.querySelector('.target-amount');
-let period = document.querySelector('.period-select');
 
 
-console.log(calculate);
-console.log(expensesAdd);
-console.log(incomeAdd);
-console.log(checkBox);
-console.log(additionalIncomeOne);
-console.log(additionalIncomeTwo);
-console.log(budgetDay);
-console.log(expensesMonth);
-console.log(additionalIncom);
-console.log(additionalExpenses);
-console.log(incomePeriod);
-console.log(targetMonth);
-console.log(budgetMonth);
-console.log(itemIncome);
-console.log(cashIncome);
-console.log(expensesOne);
-console.log(expensesTwo);
-console.log(expensesAmountOne);
-console.log(expensesAmountTwo);
-console.log(possibleExpenses);
-console.log(targetAmount);
-console.log(period);
+
 

@@ -53,8 +53,8 @@ let appData = {
         if (confirm('Есть у вас дополнительный заработок ?')) {
             let itemIncome = prompt('Какой у вас есть дополнительный заработок ?', 'такси');
             let cashIncome = prompt('Сколько в месяц вы на этом зарабатываете ?', 5000);
-            if ((typeof (itemIncome) === 'string' && itemIncome !== null) &&
-                isNumber(cashIncome)) {
+            if ((isNaN(itemIncome) &&
+                !isNumber(cashIncome))) {
                 appData.income[itemIncome.trim()] = cashIncome.trim();
             } else {
                 alert('Ошибка при заполнении одного из полей');
@@ -160,6 +160,14 @@ let appData = {
     }
 
 };
+
+let addExpenses = ['привет', 'мир'];
+let a = [];
+for(let i = 0; i < addExpenses.length; i++ ) {
+    addExpenses[i] = addExpenses[i][0].toUpperCase() + addExpenses[i].substr(1);
+    a.push(addExpenses[i]);
+}
+console.log(a.join(', '));
 
 /*appData.asking();
 

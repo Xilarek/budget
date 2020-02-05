@@ -164,7 +164,7 @@ let appData = {
 let addExpenses = ['привет', 'мир'];
 let a = [];
 for(let i = 0; i < addExpenses.length; i++ ) {
-    addExpenses[i] = addExpenses[i][0].toUpperCase() + addExpenses[i].substr(1);
+    addExpenses[i] = addExpenses[i][0].toUpperCase() + addExpenses[i].substring(1);
     a.push(addExpenses[i]);
 }
 console.log(a.join(', '));

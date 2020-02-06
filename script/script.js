@@ -70,7 +70,7 @@ let appData = {
         for (let i = 0; i < 2; i++) {
 
             let question = prompt('Введите обязательную статью расходов', 'квартира');
-            if (typeof (question) === 'string' ) {
+            if (isNaN(question)) {
 
                 do {
                     cost = prompt('Во сколько это обойдется?', '5000');

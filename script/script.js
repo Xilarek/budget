@@ -53,8 +53,8 @@ let appData = {
         if (confirm('Есть у вас дополнительный заработок ?')) {
             let itemIncome = prompt('Какой у вас есть дополнительный заработок ?', 'такси');
             let cashIncome = prompt('Сколько в месяц вы на этом зарабатываете ?', 5000);
-            if ((isNaN(itemIncome) &&
-                !isNumber(cashIncome))) {
+            if (itemIncome === ' ' &&
+                !isNumber(cashIncome)) {
                 appData.income[itemIncome.trim()] = cashIncome.trim();
             } else {
                 alert('Ошибка при заполнении одного из полей');
@@ -90,7 +90,7 @@ let appData = {
         for (let i = 0; i < 2; i++) {
 
             let question = prompt('Введите обязательную статью расходов', 'квартира');
-            if (typeof (question) === 'string' && question !== null) {
+            if (typeof (question) === 'string') {
 
                 do {
                     cost = prompt('Во сколько это обойдется?', '5000');

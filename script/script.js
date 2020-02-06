@@ -32,7 +32,7 @@ let money,
         }
         while (!isNumber(money));
     };
-//start();
+start();
 
 let appData = {
     income: {},
@@ -53,8 +53,8 @@ let appData = {
         if (confirm('Есть у вас дополнительный заработок ?')) {
             let itemIncome = prompt('Какой у вас есть дополнительный заработок ?', 'такси');
             let cashIncome = prompt('Сколько в месяц вы на этом зарабатываете ?', 5000);
-            if (itemIncome === ' ' &&
-                !isNumber(cashIncome)) {
+            if (isNaN(itemIncome) &&
+                !isNaN(cashIncome)) {
                 appData.income[itemIncome.trim()] = cashIncome.trim();
             } else {
                 alert('Ошибка при заполнении одного из полей');
@@ -63,34 +63,14 @@ let appData = {
         }
 
         appData.addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую', 'кот', 'собака');
-        appData.addExpenses =appData.addExpenses.trim().split(', ');
-        let str;
-
-        function conversionArrey(str) {
-            if (!str) {
-                return;
-            }
-            return str[0].toUpperCase() + str.slice(1);
-        }
-        for (let i = 0; i < appData.addExpenses.length; i++) {
-            appData.addExpenses[i] = appData.addExpenses[i].trim();
-        }
-        for (let i = 0; i < appData.addExpenses.length; i++) {
-            if (i === appData.addExpenses.length - 1) {
-                str += conversionArrey(appData.addExpenses[i]);
-            } else {
-                str += conversionArrey(appData.addExpenses[i]) + ', ';
-            }
-        }
-        console.log('ЗАДАНИЕ8:' + str);
-
+        
         let sum = 0;
         let cost = 0;
 
         for (let i = 0; i < 2; i++) {
 
             let question = prompt('Введите обязательную статью расходов', 'квартира');
-            if (typeof (question) === 'string') {
+            if (typeof (question) === 'string' ) {
 
                 do {
                     cost = prompt('Во сколько это обойдется?', '5000');
@@ -161,15 +141,15 @@ let appData = {
 
 };
 
-let addExpenses = ['привет', 'мир'];
+/*let addExpenses = ['привет', 'мир'];
 let a = [];
 for(let i = 0; i < addExpenses.length; i++ ) {
     addExpenses[i] = addExpenses[i][0].toUpperCase() + addExpenses[i].substring(1);
     a.push(addExpenses[i]);
 }
-console.log(a.join(', '));
+console.log(a.join(', '));*/
 
-/*appData.asking();
+appData.asking();
 
 appData.getExpensesMonth();
 console.log('Обязательные расходы на месяц:', appData.expensesMonth);
@@ -187,7 +167,7 @@ let getStatus = appData.getStatusIncome();
 console.log('Будет реализованно за:', getStatus);
 for (let key in appData) {
     console.log('Наша программа включает в себя ' + key + ' ' + appData[key]);
-}*/
+}
 
 
 

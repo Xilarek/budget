@@ -121,7 +121,7 @@ let appData = {
              let itemIncome = item.querySelector('.income-titles').value;
              let cashIncome = item.querySelector('.income-amount').value;
              if(itemIncome !== '' && cashIncome !== '') {
-                 appData.income[itemIncome] =+ cashIncome;
+                 appData.income[itemIncome] = +cashIncome;
             }
          });
     
@@ -184,7 +184,8 @@ let appData = {
     },
     positionInputPeriod: function () {
         periodAmount.textContent = periodSelect.value;
-        incomePeriodValue.value = this.calcPeriod().bind(appData);
+        incomePeriodValue.value = appData.calcPeriod();
+        
     }
 
 };
@@ -213,7 +214,7 @@ salaryAmount.addEventListener('input', blockStart );
 start.addEventListener('click', appData.start);
 expensesPlus.addEventListener('click', appData.addExpensesBlock);
 incomePlus.addEventListener('click', appData.addIncomeBlock);
-periodSelect.addEventListener('input',appData.start);
+periodSelect.addEventListener('input', appData.positionInputPeriod);
 console.dir(start);
 
 

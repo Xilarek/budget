@@ -249,7 +249,10 @@ let appData = {
             if (expensesPlus.style.display === 'none') {
                 expensesPlus.style.display = 'block';
             }
-            checkBox.checked = false;
+            if(checkBox.checked === true){
+                checkBox.checked = false;
+                checkBox.disabled = false; 
+            }
             cansel.style.display = 'none';
             start.style.display = 'block';
         });

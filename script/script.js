@@ -33,7 +33,7 @@ let isNumber = function (n) {
     return !isNaN(parseFloat(n)) && isFinite(n);
 };
 const AppData = function () {
-    
+
     this.income = {};
     this.incomeMonth = 0;
     this.addIncome = [];
@@ -72,16 +72,16 @@ AppData.prototype.start = function () {
 
 };
 
-AppData.prototype.blockStart=  function () {
-    if(salaryAmount.value.trim() !== '') {
+AppData.prototype.blockStart = function () {
+    if (salaryAmount.value.trim() !== '') {
         start.disabled = false;
     } else {
         start.disabled = true;
     }
     return;
-    };
-    
-    
+};
+
+
 AppData.prototype.showResult = function () {
     budgetMonthValue.value = this.budgetMonth;
     budgetDayValue.value = this.budgetDay;
@@ -129,7 +129,7 @@ AppData.prototype.getExpenses = function () {
             this.expenses[itemExpenses] = +cashExpenses;
         }
     }, this);
-    
+
 };
 AppData.prototype.addIncomeBlock = function () {
     incomeItems = document.querySelectorAll('.income-items');
@@ -214,66 +214,63 @@ AppData.prototype.reset = function () {
     cansel.style.display = 'none';
     //Перебираю импуты слева, чтобы заблочить их 
     start.style.display = 'block';
-        //Обнуляю значения всех импутов
-        for (let i = 0; i < allInputs.length; i++) {
-            let elem = allInputs[i];
-            elem.value = '';
-        }
-            this.income = {};
-            this.incomeMonth = 0;
-            this.addIncome = [];
-            this.expenses = {};
-            this.addExpenses = [];
-            this.deposit = false;
-            this.mission = 0;
-            this.budget = 0;
-            this.budgetDay = 0;
-            this.budgetMonth = 0;
-            this.expensesMonth = 0;
-        //Удаляю созданные поля
-        incomeItems = document.querySelectorAll('.income-items');
-        for (let i = 1; i < incomeItems.length; i++) {
-            incomeItems[i].remove();
-        }
-        expensesItems = document.querySelectorAll('.expenses-items');
-        for (let i = 1; i < expensesItems.length; i++) {
-            expensesItems[i].remove();
-        }
-        //Разблокирую поля левых импутов
-        for (let i = 0; i < leftInputs.length; i++) {
-            let elem = leftInputs[i];
-            elem.disabled = false;
-        }
-        periodSelect.value = '1';
-        periodAmount.textContent = periodSelect.value;
-        if (incomePlus.style.display === 'none') {
-            incomePlus.style.display = 'block';
-        }
-        if (expensesPlus.style.display === 'none') {
-            expensesPlus.style.display = 'block';
-        }
-        if(checkBox.checked === true){
-            checkBox.checked = false;
-            checkBox.disabled = false; 
-        }
+    //Обнуляю значения всех импутов
+    for (let i = 0; i < allInputs.length; i++) {
+        let elem = allInputs[i];
+        elem.value = '';
+    }
+    this.income = {};
+    this.incomeMonth = 0;
+    this.addIncome = [];
+    this.expenses = {};
+    this.addExpenses = [];
+    this.deposit = false;
+    this.mission = 0;
+    this.budget = 0;
+    this.budgetDay = 0;
+    this.budgetMonth = 0;
+    this.expensesMonth = 0;
+    //Удаляю созданные поля
+    incomeItems = document.querySelectorAll('.income-items');
+    for (let i = 1; i < incomeItems.length; i++) {
+        incomeItems[i].remove();
+    }
+    expensesItems = document.querySelectorAll('.expenses-items');
+    for (let i = 1; i < expensesItems.length; i++) {
+        expensesItems[i].remove();
+    }
+    //Разблокирую поля левых импутов
+    for (let i = 0; i < leftInputs.length; i++) {
+        let elem = leftInputs[i];
+        elem.disabled = false;
+    }
+    periodSelect.value = '1';
+    periodAmount.textContent = periodSelect.value;
+    if (incomePlus.style.display === 'none') {
+        incomePlus.style.display = 'block';
+    }
+    if (expensesPlus.style.display === 'none') {
+        expensesPlus.style.display = 'block';
+    }
+    if (checkBox.checked === true) {
+        checkBox.checked = false;
+        checkBox.disabled = false;
+    }
 };
-AppData.prototype.eventsListeners = function() {
-        salaryAmount.addEventListener('input', this.blockStart.bind(this));
-        start.addEventListener('click', this.start.bind(this));
-        cansel.addEventListener('click', this.reset.bind(this));
-        expensesPlus.addEventListener('click', this.addExpensesBlock);
-        incomePlus.addEventListener('click', this.addIncomeBlock);
-        periodSelect.addEventListener('input', this.positionInputPeriod.bind(this));
+AppData.prototype.eventsListeners = function () {
+    salaryAmount.addEventListener('input', this.blockStart.bind(this));
+    start.addEventListener('click', this.start.bind(this));
+    cansel.addEventListener('click', this.reset.bind(this));
+    expensesPlus.addEventListener('click', this.addExpensesBlock);
+    incomePlus.addEventListener('click', this.addIncomeBlock);
+    periodSelect.addEventListener('input', this.positionInputPeriod.bind(this));
 
 };
 const appData = new AppData();
 appData.eventsListeners();
-        /*let addExpenses = ['привет', 'мир'];
-        let a = [];
-        for(let i = 0; i < addExpenses.length; i++ ) {
-            addExpenses[i] = addExpenses[i][0].toUpperCase() + addExpenses[i].substring(1);
-            a.push(addExpenses[i]);
-        }*/
-
-       
-        
+/*let addExpenses = ['привет', 'мир'];
+let a = [];
+for(let i = 0; i < addExpenses.length; i++ ) {
+    addExpenses[i] = addExpenses[i][0].toUpperCase() + addExpenses[i].substring(1);
+    a.push(addExpenses[i]);
+}*/

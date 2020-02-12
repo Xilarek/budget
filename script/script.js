@@ -49,6 +49,18 @@ const AppData = function () {
     this.expensesMonth = 0;
 };
 AppData.prototype.start = function () {
+    start.disabled = true;
+    start.style.display = 'none';
+    cansel.style.display = 'block';
+    let leftInputs = document.querySelectorAll('.data input[type=text]');
+    for (let i = 0; i < leftInputs.length; i++) {
+        let elem = leftInputs[i];
+        elem.disabled = true;
+    }
+    //Блокирую галочку депозита
+    if (checkBox.checked === true) {
+        checkBox.disabled = true;
+    }
     this.budget = +salaryAmount.value;
     this.getExpenses();
     this.getIncome();
@@ -57,14 +69,18 @@ AppData.prototype.start = function () {
     this.getAddExpenses();
     this.getAddIncome();
     this.showResult();
-    this.reset();
 
 };
 
 AppData.prototype.blockStart=  function () {
-    start.disabled = !salaryAmount.value.trim();
+    if(salaryAmount.value.trim() !== '') {
+        start.disabled = false;
+    } else {
+        start.disabled = true;
+    }
     return;
     };
+    
     
 AppData.prototype.showResult = function () {
     budgetMonthValue.value = this.budgetMonth;
@@ -195,21 +211,9 @@ AppData.prototype.positionInputPeriod = function () {
 };
 AppData.prototype.reset = function () {
     //Убираю кноку рассчета
-    start.style.display = 'none';
+    cansel.style.display = 'none';
     //Перебираю импуты слева, чтобы заблочить их 
-    let leftInputs = document.querySelectorAll('.data input[type=text]');
-    for (let i = 0; i < leftInputs.length; i++) {
-        let elem = leftInputs[i];
-        elem.disabled = true;
-    }
-    //Блокирую галочку депозита
-    if (checkBox.checked === true) {
-        checkBox.disabled = true;
-    }
-    //Добавляю кнопку сброса
-    cansel.style.display = 'block';
-    //Вешаю обработчик событий на снопку сброс
-    cansel.addEventListener('click', function () {
+    start.style.display = 'block';
         //Обнуляю значения всех импутов
         for (let i = 0; i < allInputs.length; i++) {
             let elem = allInputs[i];
@@ -240,9 +244,6 @@ AppData.prototype.reset = function () {
             let elem = leftInputs[i];
             elem.disabled = false;
         }
-        if (salaryAmount.value.trim() === '') {
-            start.disabled = !salaryAmount.value.trim();
-        }
         periodSelect.value = '1';
         periodAmount.textContent = periodSelect.value;
         if (incomePlus.style.display === 'none') {
@@ -255,28 +256,24 @@ AppData.prototype.reset = function () {
             checkBox.checked = false;
             checkBox.disabled = false; 
         }
-        cansel.style.display = 'none';
-        start.style.display = 'block';
-    });
+};
+AppData.prototype.eventsListeners = function() {
+        salaryAmount.addEventListener('input', this.blockStart.bind(this));
+        start.addEventListener('click', this.start.bind(this));
+        cansel.addEventListener('click', this.reset.bind(this));
+        expensesPlus.addEventListener('click', this.addExpensesBlock);
+        incomePlus.addEventListener('click', this.addIncomeBlock);
+        periodSelect.addEventListener('input', this.positionInputPeriod.bind(this));
+
 };
 const appData = new AppData();
-
-
-
-        let addExpenses = ['привет', 'мир'];
+appData.eventsListeners();
+        /*let addExpenses = ['привет', 'мир'];
         let a = [];
         for(let i = 0; i < addExpenses.length; i++ ) {
             addExpenses[i] = addExpenses[i][0].toUpperCase() + addExpenses[i].substring(1);
             a.push(addExpenses[i]);
-        }
-        console.log(a.join(', '));
-        salaryAmount.addEventListener('input', appData.blockStart.bind(appData));
-        start.addEventListener('click', appData.start.bind(appData));
-        cansel.addEventListener('click', appData.reset.bind(appData));
-        expensesPlus.addEventListener('click', appData.addExpensesBlock);
-        incomePlus.addEventListener('click', appData.addIncomeBlock);
-        periodSelect.addEventListener('input', appData.positionInputPeriod.bind(appData));
+        }*/
 
-        let missionMonth = appData.getTargetMonth();
-        let getStatus = appData.getStatusIncome();
+       
         

@@ -64,6 +64,7 @@ AppData.prototype.start = function () {
     this.budget = +salaryAmount.value;
     this.getExpenses();
     this.getIncome();
+    this.getIncomeMonth();
     this.getExpensesMonth();
     this.getBudget();
     this.getAddExpenses();
@@ -73,12 +74,7 @@ AppData.prototype.start = function () {
 };
 
 AppData.prototype.blockStart = function () {
-    if (salaryAmount.value.trim() !== '') {
-        start.disabled = false;
-    } else {
-        start.disabled = true;
-    }
-    return;
+    start.disabled = salaryAmount.value.trim() === '';
 };
 
 
@@ -152,17 +148,23 @@ AppData.prototype.getIncome = function () {
     }, this);
 
 };
+//Функция суммы дополнительных доходов за месяц
+AppData.prototype.getIncomeMonth = function () {
+    for ( let key in this.income) {
+        this.incomeMonth += this.income[key];
+    }
+};
 //Функция суммый обязательных  расходов за месяц 
 AppData.prototype.getExpensesMonth = function () {
     for (let key in this.expenses) {
         this.expensesMonth += this.expenses[key];
     }
-
 };
 //Функция расчета накоплений за месяц 
 AppData.prototype.getBudget = function () {
     this.budgetMonth = this.budget + this.incomeMonth - this.expensesMonth;
     this.budgetDay = Math.floor(this.budgetMonth / 30);
+    console.log(this.incomeMonth);
 };
 //Функция расчета достижения цели 
 AppData.prototype.getTargetMonth = function () {

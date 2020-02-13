@@ -118,6 +118,7 @@ AppData.prototype.addExpensesBlock = function () {
     }
 };
 AppData.prototype.getExpenses = function () {
+    expensesItems = document.querySelectorAll('.expenses-items');
     expensesItems.forEach(function (item) {
         let itemExpenses = item.querySelector('.expenses-title').value;
         let cashExpenses = item.querySelector('.expenses-amount').value;
@@ -139,6 +140,7 @@ AppData.prototype.addIncomeBlock = function () {
     }
 };
 AppData.prototype.getIncome = function () {
+    incomeItems = document.querySelectorAll('.income-items');
     incomeItems.forEach(function (item) {
         let itemIncome = item.querySelector('.income-titles').value;
         let cashIncome = item.querySelector('.income-amount').value;
@@ -232,6 +234,7 @@ AppData.prototype.reset = function () {
     this.budgetDay = 0;
     this.budgetMonth = 0;
     this.expensesMonth = 0;
+    console.log(this);
     //Удаляю созданные поля
     incomeItems = document.querySelectorAll('.income-items');
     for (let i = 1; i < incomeItems.length; i++) {

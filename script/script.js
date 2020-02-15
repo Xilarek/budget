@@ -93,10 +93,11 @@ class AppData {
         }, this);
     }
     getAddIncome() {
-        additionalIncome.forEach(function (item) {
-            let itemValue = item.value.trim();
-            if (itemValue !== '') {
-                this.addIncome.push(itemValue);
+        const addIncome = additionalIncomValue.value.split(', ');
+        addIncome.forEach(function (item) {
+            item = item.trim();
+            if (item !== '') {
+                this.addIncome.push(item);
             }
         }, this);
     }
@@ -112,7 +113,7 @@ class AppData {
         }
     }
     getExpenses() {
-        let expensesItems = document.querySelectorAll('.expenses-items');
+        const expensesItems = document.querySelectorAll('.expenses-items');
         expensesItems.forEach(function (item) {
             let itemExpenses = item.querySelector('.expenses-title').value;
             let cashExpenses = item.querySelector('.expenses-amount').value;

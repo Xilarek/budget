@@ -84,7 +84,7 @@ class AppData {
         incomePeriodValue.value = this.calcPeriod();
     }
     getAddExpenses() {
-        let addExpenses = additionalExpensesItem.value.split(',');
+        const addExpenses = additionalExpensesItem.value.split(',');
         addExpenses.forEach(function (item) {
             item = item.trim();
             if (item !== '') {
@@ -134,7 +134,7 @@ class AppData {
         }
     }
     getIncome() {
-        let incomeItems = document.querySelectorAll('.income-items');
+        const incomeItems = document.querySelectorAll('.income-items');
         incomeItems.forEach(function (item) {
             let itemIncome = item.querySelector('.income-titles').value;
             let cashIncome = item.querySelector('.income-amount').value;
@@ -159,7 +159,7 @@ class AppData {
         this.budgetDay = Math.floor(this.budgetMonth / 30);
     }
     getTargetMonth() {
-        let missionMonth = Math.ceil(targetAmount.value / this.budgetMonth);
+        const missionMonth = Math.ceil(targetAmount.value / this.budgetMonth);
         if (missionMonth <= 0 || missionMonth === Infinity) {
             return 'Цель не будет достигнута';
         } else {

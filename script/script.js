@@ -89,8 +89,8 @@ class AppData {
         incomePeriodValue.value = this.calcPeriod();
     }
     getAddExpenses() {
-        this.addExpenses = additionalExpensesItem.value.split(',');
-        this.addExpenses.forEach(function (item) {
+        let addExpenses = additionalExpensesItem.value.split(',');
+            addExpenses.forEach(function (item) {
             item = item.trim();
             if (item !== '') {
                 this.addExpenses.push(item);
@@ -98,9 +98,9 @@ class AppData {
         }, this);
     }
     getAddIncome() {
-        this.addIncome = additionalIncomValue.value.split(', ');
-        this.addIncome.forEach(function (item) {
-            item = item.trim();
+        let addIncomes = additionalIncome;
+        addIncomes.forEach(function (item) {
+            item = item.value.trim();
             if (item !== '') {
                 this.addIncome.push(item);
             }
@@ -249,7 +249,6 @@ class AppData {
             expensesPlus.style.display = 'block';
         }
         if (checkBox.checked === true) {
-            checkBox.checked = false;
             checkBox.disabled = false;
         }
         incomePlus.disabled = false;

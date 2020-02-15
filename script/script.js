@@ -56,6 +56,8 @@ class AppData {
             let elem = leftInputs[i];
             elem.disabled = true;
         }
+        incomePlus.disabled = true;
+        expensesPlus.disabled = true;
         //Блокирую галочку депозита
         if (checkBox.checked === true) {
             checkBox.disabled = true;
@@ -72,6 +74,10 @@ class AppData {
     }
     blockStart() {
         start.disabled = salaryAmount.value.trim() === '';
+    }
+    blockButton() {
+        incomePlus.disabled = true;
+        expensesPlus.disabled = true;
     }
     showResult() {
         budgetMonthValue.value = this.budgetMonth;
@@ -127,6 +133,7 @@ class AppData {
         let cloneIncomeItem = incomeItems[0].cloneNode(true);
         incomeItems[0].parentNode.insertBefore(cloneIncomeItem, incomePlus);
         incomeItems = document.querySelectorAll('.income-items');
+        
 
         incomeItems = document.querySelectorAll('.income-items');
         if (incomeItems.length === 3) {
@@ -219,7 +226,6 @@ class AppData {
         this.budgetDay = 0;
         this.budgetMonth = 0;
         this.expensesMonth = 0;
-        console.log(this);
         //Удаляю созданные поля
         incomeItems = document.querySelectorAll('.income-items');
         for (let i = 1; i < incomeItems.length; i++) {
@@ -246,6 +252,8 @@ class AppData {
             checkBox.checked = false;
             checkBox.disabled = false;
         }
+        incomePlus.disabled = false;
+        expensesPlus.disabled = false;
     }
     eventsListeners() {
         salaryAmount.addEventListener('input', this.blockStart.bind(this));

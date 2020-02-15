@@ -18,35 +18,34 @@ const start = document.getElementById('start'),
     periodAmount = document.querySelector('.period-amount'),
     additionalIncomValue = document.querySelector('.additional_income-value'),
     expensesMonthValue = document.querySelector('.expenses_month-value'),
-    additionalExpensesItem = document.querySelector('.additional_expenses-item'),
     periodSelect = document.querySelector('[type="range"]'),
     additionalIncome = document.querySelectorAll('.additional_income-item'),
     accamulatedMonthValue = document.getElementsByTagName('accumulated_month-value')[0],
-    expensesItems = document.querySelectorAll('.expenses-items'),
     leftInputs = document.querySelectorAll('.data input[type=text]'),
-    allInputs = document.querySelectorAll('input'),
+    additionalExpensesItem = document.querySelector('.additional_expenses-item'),
+    allInputs = document.querySelectorAll('input');
+
+let expensesItems = document.querySelectorAll('.expenses-items'),
     incomeItems = document.querySelectorAll('.income-items');
 
-
-const isNumber = function (n) {
-    return !isNaN(parseFloat(n)) && isFinite(n);
-};
 class AppData {
-    constructor(income = {}, incomeMonth = 0, addIncome = [], expenses = {}, addExpenses = [], deposit = 0, precentDeposit = 0,
-        moneyDeposit = 0, mission = 0, budget = false, budgetDay = 0, budgetMonth = 0, expensesMonth = 0) {
-        this.income = income;
-        this.incomeMonth = incomeMonth;
-        this.addIncome = addIncome;
-        this.expenses = expenses;
-        this.addExpenses = addExpenses;
-        this.deposit = deposit;
-        this.precentDeposit = precentDeposit;
-        this.moneyDeposit = moneyDeposit;
-        this.mission = mission;
-        this.budget = budget;
-        this.budgetDay = budgetDay;
-        this.budgetMonth = budgetMonth;
-        this.expensesMonth = expensesMonth;
+    constructor() {
+        this.income = {};
+        this.incomeMonth = 0;
+        this.addIncome = [];
+        this.expenses = {};
+        this.addExpenses = [];
+        this.deposit = 0;
+        this.precentDeposit = 0;
+        this.moneyDeposit = 0;
+        this.mission = 0;
+        this.budget = false;
+        this.budgetDay = 0;
+        this.budgetMonth = 0;
+        this.expensesMonth = 0;
+    }
+    isNumber(n) {
+        return !isNaN(parseFloat(n)) && isFinite(n);
     }
     start() {
         start.disabled = true;
@@ -84,8 +83,8 @@ class AppData {
         incomePeriodValue.value = this.calcPeriod();
     }
     getAddExpenses() {
-        const addExpenses = additionalExpensesItem.value.split(',');
-        addExpenses.forEach(function (item) {
+        this.addExpenses = additionalExpensesItem.value.split(',');
+        this.addExpenses.forEach(function (item) {
             item = item.trim();
             if (item !== '') {
                 this.addExpenses.push(item);
@@ -93,8 +92,8 @@ class AppData {
         }, this);
     }
     getAddIncome() {
-        const addIncome = additionalIncomValue.value.split(', ');
-        addIncome.forEach(function (item) {
+        this.addIncome = additionalIncomValue.value.split(', ');
+        this.addIncome.forEach(function (item) {
             item = item.trim();
             if (item !== '') {
                 this.addIncome.push(item);
@@ -102,7 +101,7 @@ class AppData {
         }, this);
     }
     addExpensesBlock() {
-        let expensesItems = document.querySelectorAll('.expenses-items');
+        expensesItems = document.querySelectorAll('.expenses-items');
         let cloneExpensesItem = expensesItems[0].cloneNode(true);
         expensesItems[0].parentNode.insertBefore(cloneExpensesItem, expensesPlus);
         expensesItems = document.querySelectorAll('.expenses-items');
@@ -113,7 +112,7 @@ class AppData {
         }
     }
     getExpenses() {
-        const expensesItems = document.querySelectorAll('.expenses-items');
+        expensesItems = document.querySelectorAll('.expenses-items');
         expensesItems.forEach(function (item) {
             let itemExpenses = item.querySelector('.expenses-title').value;
             let cashExpenses = item.querySelector('.expenses-amount').value;
@@ -124,7 +123,7 @@ class AppData {
 
     }
     addIncomeBlock() {
-        let incomeItems = document.querySelectorAll('.income-items');
+        incomeItems = document.querySelectorAll('.income-items');
         let cloneIncomeItem = incomeItems[0].cloneNode(true);
         incomeItems[0].parentNode.insertBefore(cloneIncomeItem, incomePlus);
         incomeItems = document.querySelectorAll('.income-items');
@@ -135,7 +134,7 @@ class AppData {
         }
     }
     getIncome() {
-        const incomeItems = document.querySelectorAll('.income-items');
+        incomeItems = document.querySelectorAll('.income-items');
         incomeItems.forEach(function (item) {
             let itemIncome = item.querySelector('.income-titles').value;
             let cashIncome = item.querySelector('.income-amount').value;
@@ -222,11 +221,11 @@ class AppData {
         this.expensesMonth = 0;
         console.log(this);
         //Удаляю созданные поля
-        let incomeItems = document.querySelectorAll('.income-items');
+        incomeItems = document.querySelectorAll('.income-items');
         for (let i = 1; i < incomeItems.length; i++) {
             incomeItems[i].remove();
         }
-        let expensesItems = document.querySelectorAll('.expenses-items');
+        expensesItems = document.querySelectorAll('.expenses-items');
         for (let i = 1; i < expensesItems.length; i++) {
             expensesItems[i].remove();
         }
@@ -261,7 +260,6 @@ class AppData {
 }
 const appData = new AppData();
 appData.eventsListeners();
-console.log(appData);
 /*let addExpenses = ['привет', 'мир'];
 let a = [];
 for(let i = 0; i < addExpenses.length; i++ ) {

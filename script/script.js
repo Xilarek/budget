@@ -62,11 +62,7 @@ class AppData {
         incomePlus.disabled = true;
         expensesPlus.disabled = true;
         depositBank.disabled = true;
-        
-        //Блокирую галочку депозита
-        if (depositCheck.checked === true) {
-            depositCheck.disabled = true;
-        }
+
         this.budget = +salaryAmount.value;
         this.getExpenses();
         this.getIncome();
@@ -96,7 +92,7 @@ class AppData {
     }
     getAddExpenses() {
         let addExpenses = additionalExpensesItem.value.split(',');
-            addExpenses.forEach((item) => {
+        addExpenses.forEach((item) => {
             item = item.trim();
             if (item !== '') {
                 this.addExpenses.push(item);
@@ -138,7 +134,7 @@ class AppData {
         const cloneIncomeItem = incomeItems[0].cloneNode(true);
         incomeItems[0].parentNode.insertBefore(cloneIncomeItem, incomePlus);
         incomeItems = document.querySelectorAll('.income-items');
-        
+
 
         incomeItems = document.querySelectorAll('.income-items');
         if (incomeItems.length === 3) {
@@ -213,7 +209,7 @@ class AppData {
             let elem = allInputs[i];
             elem.value = '';
         }
-        
+
         //Удаляю созданные поля
         incomeItems = document.querySelectorAll('.income-items');
         for (let i = 1; i < incomeItems.length; i++) {
@@ -236,24 +232,25 @@ class AppData {
         if (expensesPlus.style.display === 'none') {
             expensesPlus.style.display = 'block';
         }
-        if (depositCheck.checked === true) {
-            depositCheck.checked = false;
-            depositCheck.disabled = false;
-        }
+        depositCheck.checked = false;
+        this.depositHandler();
+        depositBank.disabled = false;
+
+
         incomePlus.disabled = false;
         expensesPlus.disabled = false;
         depositBank.disabled = false;
         Object.assign(this, new AppData());
-        
+
     }
     getInfoDeposit() {
-        if( this.deposit) {
+        if (this.deposit) {
             this.precentDeposit = depositPercent.value;
             this.moneyDeposit = depositAmount.value;
         }
     }
     valuePercentDeposit = () => {
-        if (!this.isNumber(depositPercent.value) || depositPercent.value <= 0 || depositPercent.value > 100  ) {
+        if (!this.isNumber(depositPercent.value) || depositPercent.value <= 0 || depositPercent.value > 100) {
             alert('Ошибка введите корректные данные');
             depositPercent.value = '';
             start.disabled = true;
@@ -267,18 +264,17 @@ class AppData {
             depositPercent.style.display = 'inline-block';
             depositPercent.value = '';
             depositPercent.addEventListener('input', this.valuePercentDeposit);
-            
-        }else {
+
+        } else {
             depositPercent.style.display = 'none';
             depositPercent.value = valueSelect;
-            console.log(depositPercent.value);
             depositPercent.removeEventListener('input', this.valuePercentDeposit);
-            
+
         }
-        
+
     }
     depositHandler() {
-        if(depositCheck.checked) {
+        if (depositCheck.checked) {
             depositBank.style.display = 'inline-block';
             depositAmount.style.display = 'inline-block';
             this.deposit = true;

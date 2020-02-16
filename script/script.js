@@ -239,7 +239,7 @@ class AppData {
 
         incomePlus.disabled = false;
         expensesPlus.disabled = false;
-        depositBank.disabled = false;
+        
         Object.assign(this, new AppData());
 
     }

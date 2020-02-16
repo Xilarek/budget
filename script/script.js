@@ -237,6 +237,7 @@ class AppData {
             expensesPlus.style.display = 'block';
         }
         if (depositCheck.checked === true) {
+            depositCheck.checked = false;
             depositCheck.disabled = false;
         }
         incomePlus.disabled = false;
@@ -251,15 +252,27 @@ class AppData {
             this.moneyDeposit = depositAmount.value;
         }
     }
+    valuePercentDeposit = () => {
+        if (!this.isNumber(depositPercent.value) || depositPercent.value <= 0 || depositPercent.value > 100  ) {
+            alert('Ошибка введите корректные данные');
+            depositPercent.value = '';
+            start.disabled = true;
+        } else {
+            start.disabled = false;
+        }
+    }
     changePercent() {
-        const valueSelect = this.value;
+        const valueSelect = depositBank.value;
         if (valueSelect === 'other') {
             depositPercent.style.display = 'inline-block';
-            depositPercent.value = valueSelect;
+            depositPercent.value = '';
+            depositPercent.addEventListener('input', this.valuePercentDeposit);
             
         }else {
             depositPercent.style.display = 'none';
             depositPercent.value = valueSelect;
+            console.log(depositPercent.value);
+            depositPercent.removeEventListener('input', this.valuePercentDeposit);
             
         }
         
@@ -269,7 +282,7 @@ class AppData {
             depositBank.style.display = 'inline-block';
             depositAmount.style.display = 'inline-block';
             this.deposit = true;
-            depositBank.addEventListener('change', this.changePercent);
+            depositBank.addEventListener('change', this.changePercent.bind(this));
         } else {
             depositBank.style.display = 'none';
             depositAmount.style.display = 'none';
